@@ -18,7 +18,7 @@ app.get('/roll/:number', (req, res)=>{
     }
     if(isNaN(roll)) { //got this isNan function from chatGPT
         res.send(`<h1>You must specify a number.</h1>`)
-        console.log(diceRoll())
+        // console.log(diceRoll())
     } else {
         res.send(`<h1>You rolled a ${diceRoll()}!</h1>`)
     }
@@ -34,14 +34,15 @@ const collectibles = [
 
   app.get('/collectibles/:number', (req, res)=>{
     const index = req.params.number
+    res.render('show.ejs', {
+        item: collectibles[index] // had to run npm install ejs for this to work
+    })
+    // res.send(`<h1>So, you want the <%= item.name %> For <%= item.price %>, it can be yours!</h1>`)
     if (index > 2) {
         res.send(`<h1>This item is not yet in stock. Check back soon!</h1>`)
-    } else {
-    res.render('collectibles.ejs', {
-        item: collectibles[index]
+    } 
     })
-    }
-})
+
 
 
 
