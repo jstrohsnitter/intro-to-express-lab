@@ -76,6 +76,10 @@ app.get('/shoes', (req, res)=> {
   if (style) { 
     const typeShoes = shoes.filter((banana) => banana.type === style)
     res.send(typeShoes) 
+} else {
+    res.render('stock.ejs', {
+        inventory: shoes,
+    })
 }
 
  
