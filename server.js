@@ -43,6 +43,81 @@ const collectibles = [
     } 
     })
 
+    // QUERY PARAMETERS 
+    const shoes = [
+        { name: "Birkenstocks", price: 50, type: "sandal" },
+        { name: "Air Jordans", price: 500, type: "sneaker" },
+        { name: "Air Mahomeses", price: 501, type: "sneaker" },
+        { name: "Utility Boots", price: 20, type: "boot" },
+        { name: "Velcro Sandals", price: 15, type: "sandal" },
+        { name: "Jet Boots", price: 1000, type: "boot" },
+        { name: "Fifty-Inch Heels", price: 175, type: "heel" }
+    ];
+
+// app.get('/shoes', (req, res)=> {
+//     res.render('stock.ejs', {
+//         inventory: shoes,
+//     })
+// })
+
+app.get('/shoes', (req, res)=> {
+    const min = req.query.min
+    const max = req.query.max
+    const style = req.query.type
+ 
+  if(min){ 
+    const minShoes = shoes.filter((banana) => banana.price >= min) 
+    res.send(minShoes) 
+}
+  if (max){ 
+    const maxShoes = shoes.filter((banana) => banana.price <= max) 
+    res.send(maxShoes) 
+}
+  if (style) { 
+    const typeShoes = shoes.filter((banana) => banana.type === style)
+    res.send(typeShoes) 
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+//     const minShoes = []
+//     const maxShoes = []
+//     const matchingShoes = []
+    
+//     shoes.forEach(minPrice =>{
+//         if (minPrice.price > min)
+//            minShoes.push(minPrice) 
+//     })
+// res.send(minShoes)
+
+//     shoes.forEach(maxPrice =>{
+//         if (maxPrice.price < max)
+//         minShoes.push(minPrice) 
+//     })
+// res.send(maxShoes)
+
+//     shoes.forEach(style => {
+//         if(style.type === type) {
+//             matchingShoes.push((style));
+//         }
+//         res.send(matchingShoes)
+//     })
+    // matchingShoes.forEach(banana => {
+    //  shoeString = JSON.stringify(banana)
+    // })
+//  res.send(matchingShoes)
+})
 
 
 
